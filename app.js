@@ -10,9 +10,9 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 
-app.use("/", (req, res) => {
-  res.send("Hello");
-});
+const inventoryRouter = require("./routes/inventoryRouter");
+
+app.use("/", inventoryRouter);
 
 const PORT = 3000;
 
