@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('navbar', {links: links}) %>
+    <h1>New Item page</h1>
+    <form method="POST" action="/new-item">
+      <label for="brand">Brand:</label>
+      <input type="text" id="brand" name="brand" />
+      <label for="gender">Gender:</label>
+      <input type="text" id="gender" name="gender" />
+      <label for="type">Type:</label>
+      <input type="text" id="type" name="type" />
+      <label for="quantity">Quantity:</label>
+      <input type="text" id="quantity" name="quantity" />
+      <label for="price">Price:</label>
+      <input type="text" id="price" name="price" />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>

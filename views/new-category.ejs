@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('navbar', {links: links}) %>
+    <h1>New Category page</h1>
+    <form method="POST" action="/new-category">
+      <label for="brand">Brand:</label>
+      <input type="text" id="brand" name="brand" />
+      <label for="description">Description:</label>
+      <input type="text" id="description" name="description" />
+      <input type="submit" value="Submit" />
+    </form>
+  </body>
+</html>
