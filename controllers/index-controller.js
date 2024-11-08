@@ -1,7 +1,4 @@
-const links = [
-  { href: "/", text: "Home" },
-  { href: "new", text: "Form" },
-];
+const links = require("../utils/links");
 
 exports.getIndex = (req, res) => {
   // res.send("This is the index!");
