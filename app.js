@@ -10,7 +10,7 @@ app.set("view engine", "ejs");
 
 app.use(express.urlencoded({ extended: true }));
 
-const inventoryRouter = require("./routes/inventoryRouter");
+const inventoryRouter = require("./routes/inventory-router");
 
 app.use("/", inventoryRouter);
 
