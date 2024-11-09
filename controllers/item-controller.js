@@ -7,3 +7,7 @@ exports.getNewItem = (req, res) => {
 exports.postNewItem = (req, res) => {
   res.send(req.body);
 };
+
+exports.getItems = (req, res) => {
+  res.render("items", { links: links });
+};

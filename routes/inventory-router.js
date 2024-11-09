@@ -9,10 +9,14 @@ const itemController = require("../controllers/item-controller");
 inventoryRouter.get("/", indexController.getIndex);
 
 // Category
+inventoryRouter.get("/categories", categoryController.getCategories);
+
 inventoryRouter.get("/new-category", categoryController.getNewCategory);
 inventoryRouter.post("/new-category", categoryController.postNewCategory);
 
 // Item
+inventoryRouter.get("/items", itemController.getItems);
+
 inventoryRouter.get("/new-item", itemController.getNewItem);
 inventoryRouter.post("/new-item", itemController.postNewItem);
 
