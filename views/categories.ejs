@@ -8,5 +8,8 @@
   <body>
     <%- include('navbar', {links: links}) %>
     <h1>Categories</h1>
+    <% categories.forEach((category) => { %>
+    <l1> <%= category.brand %> <%= category.description %> </l1>
+    <% }) %>
   </body>
 </html>

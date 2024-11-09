@@ -1,4 +1,5 @@
 const links = require("../utils/links");
+const db = require("../db/queries");
 
 exports.getNewItem = (req, res) => {
   res.render("new-item", { links: links });
