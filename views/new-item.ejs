@@ -10,7 +10,13 @@
     <h1>New Item</h1>
     <form method="POST" action="/new-item">
       <label for="brand">Brand:</label>
-      <input type="text" id="brand" name="brand" />
+
+      <select id="brand" name="brand">
+        <% brands.forEach((brand) => { %>
+        <option value="<%= brand.brand %>"><%=brand.brand %></option>
+        <% }) %>
+      </select>
+
       <label for="gender">Gender:</label>
       <input type="text" id="gender" name="gender" />
       <label for="type">Type:</label>

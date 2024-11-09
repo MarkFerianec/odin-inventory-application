@@ -14,8 +14,13 @@ async function addCategory(brand, description) {
 }
 
 // Item
+async function getAllBrands() {
+  const { rows } = await pool.query("SELECT brand FROM categories");
+  return rows;
+}
 
 module.exports = {
   getAllCategories,
   addCategory,
+  getAllBrands,
 };
