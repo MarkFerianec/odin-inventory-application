@@ -5,8 +5,12 @@ exports.getNewCategory = (req, res) => {
   res.render("new-category", { links: links });
 };
 
-exports.postNewCategory = (req, res) => {
-  res.send(req.body);
+exports.postNewCategory = async (req, res) => {
+  const { brand, description } = req.body;
+
+  await db.addCategory(brand, description);
+
+  res.redirect("/categories");
 };
 
 exports.getCategories = async (req, res) => {
