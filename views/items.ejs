@@ -8,11 +8,13 @@
   <body>
     <%- include('navbar', {links: links}) %>
     <h1>Items</h1>
-    <% items.forEach((item) => { %>
-    <l1>
-      Brand: <%= item.brand %> Gender: <%= item.gender %> Type: <%= item.type %> Quantity: <%= item.quantity %>
-      Price: <%= item.price %>
-    </l1>
-    <% }) %>
+    <ul>
+      <% items.forEach((item) => { %>
+      <li>
+        Brand: <%= item.brand %> Gender: <%= item.gender %> Type: <%= item.type
+        %> Quantity: <%= item.quantity %> Price: $<%= item.price %>
+      </li>
+      <% }) %>
+    </ul>
   </body>
 </html>
