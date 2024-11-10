@@ -19,8 +19,22 @@ async function getAllBrands() {
   return rows;
 }
 
+async function addItem(brand, gender, type, quantity, price) {
+  await pool.query(
+    "INSERT INTO items(brand, gender, type, quantity, price) VALUES ($1, $2, $3, $4, $5)",
+    [brand, gender, type, quantity, price]
+  );
+}
+
+async function getAllItems() {
+  const { rows } = await pool.query("SELECT * FROM items");
+  return rows;
+}
+
 module.exports = {
   getAllCategories,
   addCategory,
   getAllBrands,
+  addItem,
+  getAllItems,
 };

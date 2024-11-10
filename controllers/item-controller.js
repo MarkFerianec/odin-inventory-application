@@ -7,10 +7,16 @@ exports.getNewItem = async (req, res) => {
   res.render("new-item", { links: links, brands: brands });
 };
 
-exports.postNewItem = (req, res) => {
-  res.send(req.body);
+exports.postNewItem = async (req, res) => {
+  const { brand, gender, type, quantity, price } = req.body;
+
+  await db.addItem(brand, gender, type, quantity, price);
+
+  res.redirect("/items");
 };
 
 exports.getItems = async (req, res) => {
-  res.render("items", { links: links });
+  const items = await db.getAllItems();
+
+  res.render("items", { links: links, items: items });
 };
