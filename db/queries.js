@@ -31,10 +31,15 @@ async function getAllItems() {
   return rows;
 }
 
+async function deleteItem(item_id) {
+  await pool.query("DELETE FROM items WHERE item_id = ($1)", [item_id]);
+}
+
 module.exports = {
   getAllCategories,
   addCategory,
   getAllBrands,
   addItem,
   getAllItems,
+  deleteItem,
 };

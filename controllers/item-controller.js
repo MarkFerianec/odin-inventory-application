@@ -20,3 +20,11 @@ exports.getItems = async (req, res) => {
 
   res.render("items", { links: links, items: items });
 };
+
+exports.deleteItem = async (req, res) => {
+  const { item_id } = req.params;
+
+  await db.deleteItem(item_id);
+
+  res.redirect("/items");
+};

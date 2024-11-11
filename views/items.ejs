@@ -10,10 +10,13 @@
     <h1>Items</h1>
     <ul>
       <% items.forEach((item) => { %>
-      <li>
-        Brand: <%= item.brand %> Gender: <%= item.gender %> Type: <%= item.type
-        %> Quantity: <%= item.quantity %> Price: $<%= item.price %>
-      </li>
+      <form action="/delete-item/<%= item.item_id %>" method="POST">
+        <li>
+          Brand: <%= item.brand %> Gender: <%= item.gender %> Type: <%=
+          item.type %> Quantity: <%= item.quantity %> Price: $<%= item.price %>
+          <button type="submit">Delete</button>
+        </li>
+      </form>
       <% }) %>
     </ul>
   </body>
