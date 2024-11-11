@@ -5,12 +5,15 @@ exports.getNewCategory = (req, res) => {
   res.render("new-category", { links: links });
 };
 
-exports.postNewCategory = async (req, res) => {
+exports.postNewCategory = async (req, res, next) => {
   const { brand, description } = req.body;
 
-  await db.addCategory(brand, description);
-
-  res.redirect("/categories");
+  try {
+    await db.addCategory(brand, description);
+    res.redirect("/categories");
+  } catch (error) {
+    next(error);
+  }
 };
 
 exports.getCategories = async (req, res) => {

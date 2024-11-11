@@ -12,7 +12,11 @@ app.use(express.urlencoded({ extended: true }));
 
 const inventoryRouter = require("./routes/inventory-router");
 
+const middleware = require("./utils/middleware");
+
 app.use("/", inventoryRouter);
+
+app.use(middleware.errorHandler);
 
 const PORT = 3000;
 
