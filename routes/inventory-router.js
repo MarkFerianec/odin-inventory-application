@@ -14,6 +14,11 @@ inventoryRouter.get("/categories", categoryController.getCategories);
 inventoryRouter.get("/new-category", categoryController.getNewCategory);
 inventoryRouter.post("/new-category", categoryController.postNewCategory);
 
+inventoryRouter.post(
+  "/delete-category/:category_id",
+  categoryController.deleteCategory
+);
+
 // Item
 inventoryRouter.get("/items", itemController.getItems);
 

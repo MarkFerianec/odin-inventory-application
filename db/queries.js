@@ -13,6 +13,12 @@ async function addCategory(brand, description) {
   );
 }
 
+async function deleteCategory(category_id) {
+  await pool.query("DELETE FROM categories WHERE category_id = ($1)", [
+    category_id,
+  ]);
+}
+
 // Item
 async function getAllBrands() {
   const { rows } = await pool.query("SELECT brand FROM categories");
@@ -58,4 +64,5 @@ module.exports = {
   deleteItem,
   getItemDetails,
   updateItem,
+  deleteCategory,
 };

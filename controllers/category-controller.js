@@ -21,3 +21,11 @@ exports.getCategories = async (req, res) => {
 
   res.render("categories", { links: links, categories: categories });
 };
+
+exports.deleteCategory = async (req, res) => {
+  const { category_id } = req.params;
+
+  await db.deleteCategory(category_id);
+
+  res.redirect("/categories");
+};
