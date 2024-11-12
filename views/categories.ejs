@@ -8,15 +8,22 @@
   <body>
     <%- include('navbar', {links: links}) %>
     <h1>Categories</h1>
+    <% if (categories.length === 0) { %>
+    <h2><a href="/new-category">Create a category</a></h2>
+    <% } else { %>
     <ul>
       <% categories.forEach((category) => { %>
       <li>
         <%= category.brand %> <%= category.description %>
-        <form action="/delete-category/<%= category.category_id %>" method="POST">
+        <form
+          action="/delete-category/<%= category.category_id %>"
+          method="POST"
+        >
           <button type="submit">Delete</button>
         </form>
       </li>
       <% }) %>
     </ul>
+    <% } %>
   </body>
 </html>

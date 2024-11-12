@@ -8,6 +8,10 @@
   <body>
     <%- include('navbar', {links: links}) %>
     <h1>New Item</h1>
+    <% if (brands.length === 0) { %>
+    <h2><a href="new-category">Create a category first</a></h2>
+    <% } else { %>
+
     <form method="POST" action="/new-item">
       <label for="brand">Brand:</label>
 
@@ -37,5 +41,6 @@
 
       <input type="submit" value="Submit" />
     </form>
+    <% } %>
   </body>
 </html>

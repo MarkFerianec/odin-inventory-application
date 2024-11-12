@@ -8,6 +8,9 @@
   <body>
     <%- include('navbar', {links: links}) %>
     <h1>Items</h1>
+    <% if (items.length === 0) { %>
+    <h2><a href="/new-item">Create an item</a></h2>
+    <% } else { %>
     <ul>
       <% items.forEach((item) => { %>
       <div>
@@ -24,5 +27,6 @@
       </div>
       <% }) %>
     </ul>
+    <% } %>
   </body>
 </html>
