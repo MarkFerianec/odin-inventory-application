@@ -35,6 +35,20 @@ async function deleteItem(item_id) {
   await pool.query("DELETE FROM items WHERE item_id = ($1)", [item_id]);
 }
 
+async function getItemDetails(item_id) {
+  const row = await pool.query("SELECT * FROM items WHERE item_id = ($1)", [
+    item_id,
+  ]);
+  return row;
+}
+
+async function updateItem(gender, type, quantity, price, item_id) {
+  await pool.query(
+    "UPDATE items SET gender = ($1), type = ($2), quantity = ($3), price = ($4) WHERE item_id = ($5)",
+    [gender, type, quantity, price, item_id]
+  );
+}
+
 module.exports = {
   getAllCategories,
   addCategory,
@@ -42,4 +56,6 @@ module.exports = {
   addItem,
   getAllItems,
   deleteItem,
+  getItemDetails,
+  updateItem,
 };

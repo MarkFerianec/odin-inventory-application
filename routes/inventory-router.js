@@ -22,4 +22,7 @@ inventoryRouter.post("/new-item", itemController.postNewItem);
 
 inventoryRouter.post("/delete-item/:item_id", itemController.deleteItem);
 
+inventoryRouter.get("/update-item/:item_id", itemController.getUpdateItem);
+inventoryRouter.post("/update-item/:item_id", itemController.postUpdateItem);
+
 module.exports = inventoryRouter;

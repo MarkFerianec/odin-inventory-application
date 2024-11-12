@@ -28,3 +28,21 @@ exports.deleteItem = async (req, res) => {
 
   res.redirect("/items");
 };
+
+exports.getUpdateItem = async (req, res) => {
+  const { item_id } = req.params;
+
+  const itemDetails = await db.getItemDetails(item_id);
+
+  res.render("item-update", { links: links, item: itemDetails.rows[0] });
+};
+
+exports.postUpdateItem = async (req, res) => {
+  const { item_id } = req.params;
+
+  const { gender, type, quantity, price } = req.body;
+
+  await db.updateItem(gender, type, quantity, price, item_id);
+
+  res.redirect("/items");
+};
