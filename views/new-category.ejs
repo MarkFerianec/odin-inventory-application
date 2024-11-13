@@ -8,6 +8,7 @@
   <body>
     <%- include('navbar', {links: links}) %>
     <h1>New Category</h1>
+    <%- include('partials/errors') %>
     <form method="POST" action="/new-category">
       <label for="brand">Brand:</label>
       <input type="text" id="brand" name="brand" />
