@@ -8,8 +8,10 @@
   <body>
     <%- include('navbar') %>
     <h1>Item update</h1>
+    <%- include('partials/errors') %>
     <div>
-      <h2>Item details: </h2>Brand: <%= item.brand %> Gender: <%= item.gender %> Type: <%= item.type %>
+      <h2>Item details:</h2>
+      Brand: <%= item.brand %> Gender: <%= item.gender %> Type: <%= item.type %>
       Quantity: <%= item.quantity %> Price: $<%= item.price %>
     </div>
     <form method="POST" action="">

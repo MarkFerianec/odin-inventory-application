@@ -72,12 +72,27 @@ exports.getUpdateItem = async (req, res) => {
   res.render("item-update", { links: links, item: itemDetails.rows[0] });
 };
 
-exports.postUpdateItem = async (req, res) => {
-  const { item_id } = req.params;
+exports.postUpdateItem = [
+  validateItem,
+  async (req, res) => {
+    const errors = validationResult(req);
 
-  const { gender, type, quantity, price } = req.body;
+    const { item_id } = req.params;
 
-  await db.updateItem(gender, type, quantity, price, item_id);
+    if (errors.isEmpty()) {
+      const { gender, type, quantity, price } = req.body;
 
-  res.redirect("/items");
-};
+      await db.updateItem(gender, type, quantity, price, item_id);
+
+      res.redirect("/items");
+    }
+
+    const itemDetails = await db.getItemDetails(item_id);
+
+    res.status(400).render("item-update", {
+      links: links,
+      item: itemDetails.rows[0],
+      errors: errors.array(),
+    });
+  },
+];
