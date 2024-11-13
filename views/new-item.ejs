@@ -8,6 +8,7 @@
   <body>
     <%- include('navbar') %>
     <h1>New Item</h1>
+    <%- include('partials/errors') %> 
     <% if (brands.length === 0) { %>
     <h2><a href="new-category">Create a category first</a></h2>
     <% } else { %>

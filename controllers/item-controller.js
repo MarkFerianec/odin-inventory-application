@@ -7,13 +7,48 @@ exports.getNewItem = async (req, res) => {
   res.render("new-item", { links: links, brands: brands });
 };
 
-exports.postNewItem = async (req, res) => {
-  const { brand, gender, type, quantity, price } = req.body;
+const { body, validationResult } = require("express-validator");
 
-  await db.addItem(brand, gender, type, quantity, price);
+const numericErr = "must only contain numbers.";
+const lengthErr = "must be atleast one.";
 
-  res.redirect("/items");
-};
+const validateItem = [
+  body("quantity")
+    .trim()
+    .isNumeric()
+    .withMessage(`quantity ${numericErr}`)
+    .isLength({ min: 1 })
+    .withMessage(`quantity ${lengthErr}`),
+  body("price")
+    .trim()
+    .isNumeric()
+    .withMessage(`price ${numericErr}`)
+    .isLength({ min: 1 })
+    .withMessage(`price ${lengthErr}`),
+];
+
+exports.postNewItem = [
+  validateItem,
+  async (req, res) => {
+    const errors = validationResult(req);
+
+    if (errors.isEmpty()) {
+      const { brand, gender, type, quantity, price } = req.body;
+
+      await db.addItem(brand, gender, type, quantity, price);
+
+      res.redirect("/items");
+    }
+
+    const brands = await db.getAllBrands();
+
+    res.status(400).render("new-item", {
+      links: links,
+      brands: brands,
+      errors: errors.array(),
+    });
+  },
+];
 
 exports.getItems = async (req, res) => {
   const items = await db.getAllItems();
