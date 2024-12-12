@@ -17,13 +17,15 @@ const validateCategory = [
     .isAlpha()
     .withMessage(`Brand ${alphaErr}`)
     .isLength({ min: 1, max: 15 })
-    .withMessage(`Brand ${brandLengthErr}`),
+    .withMessage(`Brand ${brandLengthErr}`)
+    .escape(),
   body("description")
     .trim()
     .isAlpha()
     .withMessage(`Description ${alphaErr}`)
     .isLength({ min: 1, max: 30 })
-    .withMessage(`Description ${descriptionLengthErr}`),
+    .withMessage(`Description ${descriptionLengthErr}`)
+    .escape(),
 ];
 
 exports.postNewCategory = [

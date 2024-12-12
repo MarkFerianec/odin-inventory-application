@@ -18,13 +18,15 @@ const validateItem = [
     .isNumeric()
     .withMessage(`quantity ${numericErr}`)
     .isLength({ min: 1 })
-    .withMessage(`quantity ${lengthErr}`),
+    .withMessage(`quantity ${lengthErr}`)
+    .escape(),
   body("price")
     .trim()
     .isNumeric()
     .withMessage(`price ${numericErr}`)
     .isLength({ min: 1 })
-    .withMessage(`price ${lengthErr}`),
+    .withMessage(`price ${lengthErr}`)
+    .escape(),
 ];
 
 exports.postNewItem = [
