@@ -18,6 +18,6 @@ To install the project, follow these steps:
 
 ```bash
 git clone git@github.com:MarkFerianec/odin-inventory-application.git
-cd ODIN-Inventory-application-project
+cd odin-inventory-application
 npm install
 ```
